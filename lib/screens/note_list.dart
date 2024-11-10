@@ -84,7 +84,7 @@ class NoteListState extends State<NoteList> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'My Notes',
+          'My Simple Note',
           style: TextStyle(color: titleColor), // Dynamic title color
         ),
         backgroundColor: widget.isDarkMode
