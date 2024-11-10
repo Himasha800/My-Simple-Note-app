@@ -7,8 +7,8 @@ import 'package:note_app/models/note.dart';
 
 class DatabaseHelper {
 
-static DatabaseHelper?_databaseHelper;              // Singleton Database
-static Database?_database;  // Singleton Databas
+static DatabaseHelper?_databaseHelper;            
+static Database?_database;  
 
 String noteTable = 'note_table';
 String colId = 'id';
@@ -30,11 +30,11 @@ Future<Database> get database async {
   }
 
 Future<Database> initializeDatabase() async{
-  // Get the directory path for both Android and iOS to store database.
+  
 		Directory directory = await getApplicationDocumentsDirectory();
 		String path = '${directory.path}notes.db';
 
-		// Open/create the database at a given path
+
 		var notesDatabase = await openDatabase(path, version: 1, onCreate: _createDb);
 		return notesDatabase;
 
@@ -74,7 +74,7 @@ void _createDb(Database db, int newVersion) async {
 		return result;
 	}
 
-	// Get number of Note objects in database
+	
 	Future<int?> getCount() async {
 		Database db = await database;
 		List<Map<String, dynamic>> x = await db.rawQuery('SELECT COUNT (*) from $noteTable');
@@ -82,14 +82,14 @@ void _createDb(Database db, int newVersion) async {
 		return result;
 	}
 
-  // Get the 'Map List' [ List<Map> ] and convert it to 'Note List' [ List<Note> ]
+  
 	Future<List<Note>> getNoteList() async {
 
-		var noteMapList = await getNoteMapList(); // Get 'Map List' from database
-		int count = noteMapList.length;         // Count the number of map entries in db table
+		var noteMapList = await getNoteMapList(); 
+		int count = noteMapList.length;         
 
-		List<Note> noteList = [];// Initialize an empty list of Note objects
-		// For loop to create a 'Note List' from a 'Map List'
+		List<Note> noteList = [];
+	
 		for (int i = 0; i < count; i++) {
 			noteList.add(Note.fromMapObject(noteMapList[i]));
 		}

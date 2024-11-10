@@ -1,8 +1,8 @@
 
 class Note {
-  int? _id; // Make _id nullable
+  int? _id; 
   late String _title;
-  String? _description; // Keep description nullable
+  String? _description; 
   late String _date;
   late int _priority;
 
@@ -10,7 +10,7 @@ class Note {
 
   Note.withId(this._id, this._title, this._date, this._priority, [this._description]);
 
-  int? get id => _id; // Renamed getter for consistency
+  int? get id => _id; 
   String get title => _title;
   String? get description => _description;
   int get priority => _priority;
@@ -38,7 +38,7 @@ class Note {
     _date = newDate;
   }
 
-  // Convert a Note object into a Map object
+  
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{};
     if (_id != null) {
@@ -52,7 +52,7 @@ class Note {
     return map;
   }
 
-  // Extract a Note object from a Map object
+  
   Note.fromMapObject(Map<String, dynamic> map) {
     _id = map['id'];
     _title = map['title'];

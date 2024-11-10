@@ -18,7 +18,7 @@ class NoteApp extends StatefulWidget {
 }
 
 class _NoteAppState extends State<NoteApp> {
-  bool _isDarkMode = false; // Tracks if dark mode is on or off
+  bool _isDarkMode = false; 
 
   void _toggleTheme(bool isOn) {
     setState(() {
@@ -41,7 +41,7 @@ class _NoteAppState extends State<NoteApp> {
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color.fromARGB(255, 60, 63, 65), // Dark mode AppBar color
+          backgroundColor: Color.fromARGB(255, 60, 63, 65), 
         ),
       ),
       home: NoteList(
@@ -72,35 +72,35 @@ class NoteListState extends State<NoteList> {
   DatabaseHelper databaseHelper = DatabaseHelper();
   late List<Note> noteList = [];
   int count = 0;
-  bool _isGridView = false; // Tracks if in grid view mode
+  bool _isGridView = false; 
 
   @override
   Widget build(BuildContext context) {
     updateListview();
 
-    // Set the AppBar title color based on dark or light mode
+    
     Color titleColor = widget.isDarkMode ? Colors.white : Colors.black;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(
           'My Simple Note',
-          style: TextStyle(color: titleColor), // Dynamic title color
+          style: TextStyle(color: titleColor), 
         ),
         backgroundColor: widget.isDarkMode
-            ? const Color.fromARGB(255, 125, 125, 130) // Dark mode color for AppBar
-            : const Color.fromARGB(255, 77, 72, 240), // Light mode color for AppBar
+            ? const Color.fromARGB(255, 125, 125, 130) 
+            : const Color.fromARGB(255, 77, 72, 240), 
         actions: [
-          // Button to toggle between list and grid view
+          
           IconButton(
             icon: Icon(_isGridView ? Icons.list : Icons.grid_view),
             onPressed: () {
               setState(() {
-                _isGridView = !_isGridView; // Toggle between grid and list
+                _isGridView = !_isGridView; 
               });
             },
           ),
-          // Dark mode toggle switch
+          
           Switch(
             value: widget.isDarkMode,
             onChanged: widget.onToggleTheme,
@@ -117,8 +117,8 @@ class NoteListState extends State<NoteList> {
         },
         tooltip: 'Add Note',
         backgroundColor: widget.isDarkMode
-            ? const Color.fromARGB(255, 128, 127, 131) // Match AppBar color in dark mode
-            : const Color.fromARGB(255, 31, 6, 219), // Original color in light mode
+            ? const Color.fromARGB(255, 128, 127, 131) 
+            : const Color.fromARGB(255, 31, 6, 219), 
         child: const Icon(
           Icons.add,
           color: Colors.white,
@@ -134,7 +134,7 @@ class NoteListState extends State<NoteList> {
         );
 
     if (_isGridView) {
-      // Grid view with 2 columns
+      
       return GridView.builder(
         itemCount: count,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -151,7 +151,7 @@ class NoteListState extends State<NoteList> {
             
             child: GestureDetector(
               onTap: () {
-                // Navigate to detail for editing when tapped
+                
                 navigateToDetail(noteList[position], 'Edit Note');
               },
 
@@ -170,8 +170,8 @@ class NoteListState extends State<NoteList> {
                 child: Text(
                   noteList[position].title,
                   style: titleStyle?.copyWith(
-                    fontSize: 16.0, // Increase the font size
-                    fontWeight: FontWeight.bold, // Make the title bold
+                    fontSize: 16.0, 
+                    fontWeight: FontWeight.bold, 
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -207,8 +207,8 @@ class NoteListState extends State<NoteList> {
               title: Text(
                 noteList[position].title,
                 style: titleStyle?.copyWith(
-                fontSize: 16.0, // Increase the font size
-                fontWeight: FontWeight.bold, // Make the title bold
+                fontSize: 16.0, 
+                fontWeight: FontWeight.bold, 
               ),
               ),
               subtitle: Text(

@@ -37,14 +37,14 @@ class NoteDetailState extends State<NoteDetail> {
     titleController.text = note.title;
     descriptionController.text = note.description ?? '';
 
-    // Determine colors based on the current theme (light or dark mode)
+    // (light or dark mode)
     final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final Color appBarBackgroundColor = isDarkMode
         ? Colors.grey[800]!
         : const Color.fromARGB(255, 77, 72, 240);
     const Color appBarTitleColor = Colors.white;
 
-    // Button background colors based on the theme
+    // Button background colors 
     final Color buttonBackgroundColor = isDarkMode
         ? Colors.grey[800]!
         : const Color.fromARGB(255, 5, 165, 240);
@@ -123,8 +123,8 @@ class NoteDetailState extends State<NoteDetail> {
                      child: TextField(
                      controller: descriptionController,
                      style: textStyle,
-                     maxLines: null,  // Allows text to grow vertically
-                     keyboardType: TextInputType.multiline,  // Enables multiline input
+                     maxLines: null,  
+                     keyboardType: TextInputType.multiline,  
                      onChanged: (value) {
                        debugPrint('Something changed in Description Text Field');
                        updateDescription();
@@ -148,8 +148,8 @@ class NoteDetailState extends State<NoteDetail> {
                     Expanded(
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          foregroundColor: buttonTextColor, // Text color
-                          backgroundColor: buttonBackgroundColor, // Background color for Save button
+                          foregroundColor: buttonTextColor, 
+                          backgroundColor: buttonBackgroundColor, 
                           textStyle: const TextStyle(fontSize: 18.0),
                         ),
                         child: const Text('Save'),
@@ -165,8 +165,8 @@ class NoteDetailState extends State<NoteDetail> {
                     Expanded(
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          foregroundColor: buttonTextColor, // Text color
-                          backgroundColor: buttonBackgroundColor, // Background color for Delete button
+                          foregroundColor: buttonTextColor, 
+                          backgroundColor: buttonBackgroundColor, 
                           textStyle: const TextStyle(fontSize: 18.0),
                         ),
                         child: const Text('Delete'),
